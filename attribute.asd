@@ -11,8 +11,23 @@
                "tkutil"      ; https://github.com/kametoku/tkutil
                )
   :components ((:module "src"
-                :components ((:file "attribute"))))
-  :description ""
+                :components
+                ((:file "package")
+                 (:file "util")
+                 (:file "format")
+                 (:file "attribute")
+                 (:module "widgets"
+                  :components
+                  ((:file "render")
+                   (:file "checkbox")
+                   (:file "object")
+                   (:file "column")
+                   (:file "list")
+                   (:file "property")
+                   (:file "edit")
+                   (:file "new")
+                   (:file "csv"))))))
+  :description "View for Reblocks and Mito objects."
   :in-order-to ((test-op (test-op "attribute/tests"))))
 
 (defsystem "attribute/tests"
