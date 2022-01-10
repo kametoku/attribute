@@ -1,10 +1,10 @@
 (defpackage :attribute
   (:use :cl)
-  (:import-from :weblocks/widget
+  (:import-from :reblocks/widget
                 :defwidget
                 :render
                 :update)
-  (:import-from :weblocks/html
+  (:import-from :reblocks/html
                 :with-html)
   (:shadow #:formatter)
   (:export #:attributes
@@ -56,7 +56,7 @@
 
 (defun format-small-image (url)
   (when url
-    (values (weblocks/html:with-html-string
+    (values (reblocks/html:with-html-string
               (:img :class "ui small image" :src url))
             t)))
 
@@ -149,7 +149,7 @@
     (with-html
       (:div :class "ui toggle checkbox"
             (:input :type "checkbox" :name name :checked value
-                    :onclick (weblocks/actions:make-js-action
+                    :onclick (reblocks/actions:make-js-action
                               (lambda (&key &allow-other-keys)
                                 (toggle widget)))
                     :value "1" :id name :disabled read-only)
@@ -202,7 +202,7 @@
               (let ((widget (fui.modules:make-selection-dropdown-widget
                              :name name :value value :placeholder placeholder
                              :dropdown-items datalist)))
-                (weblocks/widget:render widget)
+                (reblocks/widget:render widget)
                 widget))
              (t
               (:input :type type :name name :value val
@@ -241,7 +241,7 @@
 
 (defmethod render-object ((widget object-widget))
   "Call `render-object' directly when you need the results of `render-attrs'.
-On the other hand, `weblocks/widget:render' would not return any valus."
+On the other hand, `reblocks/widget:render' would not return any valus."
   (let ((attributes (unexpand (funcall (formatter widget) (object widget)))))
     (when (skip-sections-p widget)
       (setf (cdr attributes) nil))
@@ -280,7 +280,7 @@ On the other hand, `weblocks/widget:render' would not return any valus."
 
 (defwidget list-widget (object-widget) ())
 
-(defmethod weblocks/widget:get-html-tag ((widget list-widget))
+(defmethod reblocks/widget:get-html-tag ((widget list-widget))
   :tr)
 
 (defmethod render-attr ((widget list-widget) object &rest attr
@@ -327,7 +327,7 @@ On the other hand, `weblocks/widget:render' would not return any valus."
 (defwidget edit-widget (object-widget)
   ((input-widgets :initform nil :accessor input-widgets)))
 
-(defmethod weblocks/widget:get-css-classes ((widget edit-widget))
+(defmethod reblocks/widget:get-css-classes ((widget edit-widget))
   (append '(:ui :grid) (call-next-method)))
 
 (defmethod render-attr ((widget edit-widget) object &rest attr
@@ -357,7 +357,7 @@ On the other hand, `weblocks/widget:render' would not return any valus."
 
 (defwidget new-widget (edit-widget) ())
 
-;; (defmethod weblocks/widget:get-css-classes ((widget new-widget))
+;; (defmethod reblocks/widget:get-css-classes ((widget new-widget))
 ;;   (append '(:ui :grid) (call-next-method)))
 
 (defmethod render-attr ((widget new-widget) %object &rest attr

@@ -4,7 +4,7 @@
   :license "LLGPL"
   :depends-on ("alexandria"
                "cl-ppcre"
-               "weblocks"
+               "reblocks"
 
                ;; not available from Ultralisp site
                "cl-fomantic" ; https://github.com/kametoku/cl-fomantic
