@@ -5,13 +5,13 @@
 
 (defparameter *date-format* '(:year #\- (:month 2) #\- (:day 2)))
 
-(defun format-date-time (timestamp)
+(defun format-date-time (timestamp &key (format *date-time-format*))
   (when timestamp
-    (local-time:format-timestring nil timestamp :format *date-time-format*)))
+    (local-time:format-timestring nil timestamp :format format)))
 
-(defun format-date (timestamp)
+(defun format-date (timestamp &key (format *date-format*))
   (when timestamp
-    (local-time:format-timestring nil timestamp :format *date-format*)))
+    (local-time:format-timestring nil timestamp :format format)))
 
 (defparameter *date-formatters*
   (list #'format-date #'format-date-time))
