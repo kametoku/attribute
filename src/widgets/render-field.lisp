@@ -39,8 +39,8 @@
 
 (defmethod %render-field ((tag (eql :input)) (type (eql :checkbox))
                           &key name value read-only &allow-other-keys)
-  (let ((widget (make-instance 'checkbox
-                               :name name :value value :read-only read-only)))
+  (let ((widget (fui.modules:make-checkbox-widget
+                 :name name :value value :read-only read-only)))
     (render widget)
     widget))
 

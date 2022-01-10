@@ -19,7 +19,6 @@
                  (:module "widgets"
                   :components
                   ((:file "render-field")
-                   (:file "checkbox")
                    (:file "object")
                    (:file "column")
                    (:file "list")
