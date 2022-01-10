@@ -18,7 +18,7 @@
                  (:file "attribute")
                  (:module "widgets"
                   :components
-                  ((:file "render")
+                  ((:file "render-field")
                    (:file "checkbox")
                    (:file "object")
                    (:file "column")
