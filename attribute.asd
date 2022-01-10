@@ -27,7 +27,7 @@
                    (:file "edit")
                    (:file "new")
                    (:file "csv"))))))
-  :description "View for Reblocks and Mito objects."
+  :description "Reblocks View for Mito objects."
   :in-order-to ((test-op (test-op "attribute/tests"))))
 
 (defsystem "attribute/tests"
