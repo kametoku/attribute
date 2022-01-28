@@ -64,6 +64,13 @@
     (reblocks/widget:render widget)
     widget))
 
+(defmethod %render-field ((tag (eql :input)) (type (eql :calendar))
+                          &key name value placeholder &allow-other-keys)
+  (let ((widget (fui.modules:make-calendar-widget
+                 :id name :initial-date value :placeholder placeholder)))
+    (reblocks/widget:render widget)
+    widget))
+
 (defmethod %render-field ((tag (eql :input)) type
                           &key name value format placeholder required autofocus
                             minlength maxlength min max datalist datalist-id read-only
