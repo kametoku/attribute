@@ -65,9 +65,10 @@
     widget))
 
 (defmethod %render-field ((tag (eql :input)) (type (eql :calendar))
-                          &key name value placeholder &allow-other-keys)
+                          &key name value placeholder required &allow-other-keys)
   (let ((widget (fui.modules:make-calendar-widget
-                 :id name :initial-date value :placeholder placeholder)))
+                 :name name :value value :placeholder placeholder
+                 :required required)))
     (reblocks/widget:render widget)
     widget))
 
