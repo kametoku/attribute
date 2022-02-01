@@ -25,7 +25,7 @@
 (defmethod render-attr ((widget csv-data-widget) %object
                         &key value format (object %object) &allow-other-keys)
   (let ((value (tkutil:ensure-value value object)))
-    (format-field-value value format)))
+    (or (format-field-value value format) "")))
 
 (defun make-csv-data-widget (formatter object)
   (make-instance 'csv-data-widget :formatter formatter :object object))
