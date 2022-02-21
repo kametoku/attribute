@@ -16,6 +16,7 @@
 
            #:format-date-time
            #:format-date
+           #:format-month
            #:format-currency
            #:format-small-image
 

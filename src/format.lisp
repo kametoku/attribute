@@ -5,6 +5,8 @@
 
 (defparameter *date-format* '(:year #\- (:month 2) #\- (:day 2)))
 
+(defparameter *month-format* '(:year #\- (:month 2)))
+
 (defun format-date-time (timestamp &key (format *date-time-format*))
   (when timestamp
     (local-time:format-timestring nil timestamp :format format)))
@@ -13,8 +15,12 @@
   (when timestamp
     (local-time:format-timestring nil timestamp :format format)))
 
+(defun format-month (timestamp &key (format *month-format*))
+  (when timestamp
+    (local-time:format-timestring nil timestamp :format format)))
+
 (defparameter *date-formatters*
-  (list #'format-date #'format-date-time))
+  (list #'format-date-time #'format-date #'format-month))
 
 (defun format-currency (amount &key (currency "JPY"))
   (when amount
